@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ 	<title>Desktop Notification</title>
+ 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.9/push.min.js"></script>
+ 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+ </head>
+ <body>
+
+	<button id="notify-btn">Notify Me</button>
+	<button id="check-btn">Check Permission</button>
+	<button id="clear-btn">Clear All</button>
+
+	<script type="text/javascript">
+		
+		$("#notify-btn").click(function() {
+			Push.create("Localhost", {
+				body: 'This is test message from localhost',
+				icon: './logo.png',
+				timeout: 5000,
+				onClick: function() {
+					this.close();
+				}
+			});
+		});
+
+		$("#check-btn").click(function() {
+			console.log(Push.Permission.has());
+		});
+
+		$("#clear-btn").click(function() {
+			Push.clear();
+		});
+
+	</script>
+ 
+ </body>
+ </html>

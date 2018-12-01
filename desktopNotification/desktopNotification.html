@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Desktop Notification</title>
+</head>
+<body>
+
+	<a href="#" id="permission">Request Permission</a>
+	<a href="#" id="trigger">Trigger</a>
+
+	<script type="text/javascript">
+		var p = document.getElementById('permission');
+		var t = document.getElementById('trigger');
+
+		p.addEventListener('click', function(event) {
+			event.preventDefault();
+
+			if(!window.Notification) {
+				alert('Sorry, Notifications not supported!');
+			} else {
+				Notification.requestPermission(function(msg) {
+					console.log(msg);
+					if(msg == 'denied') {
+						alert("You've denied permission!");
+					} else if(msg == 'granted') {
+						alert("You've granted permission!");
+					}
+				});
+			}
+		});
+
+		t.addEventListener('click', function(event) {
+			var notify;
+			event.preventDefault();
+
+			if(Notification.permission == 'default') {
+				alert("Please ask the permission first!");
+			} else {
+				notify = new Notification("Localhost", {
+					body: 'This is test message from localhost',
+					icon: './logo.png',
+				});
+
+				notify.onclick = function() {
+					console.log(this);
+					this.close();
+				};
+			}
+		});
+	</script>
+
+</body>
+</html>
