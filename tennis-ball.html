@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ball</title>
+    <style>
+
+        body{
+            margin: 0px;
+            padding: 0px;
+            background: #004040;
+        }
+        .center{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .ball{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: #00ff00;
+            animation: animate 3s linear infinite;
+            overflow: hidden;
+        }
+        .ball::before,
+        .ball::after{
+            content: '';
+            position: absolute;
+            top: 125px;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: transparent;
+            border: 5px solid white;
+            filter: blur(1px);
+        }
+        .ball::before{
+            right: 80px;
+        }
+        .ball::after{
+            left: 280px;
+        }
+        .shadow{
+            position: relative;
+            top: 120px;
+            width: 250px;
+            height: 100px;
+            border-radius: 50%;
+            background: black;
+            opacity: .1;
+            filter: blur(3px);
+            z-index: -1;
+            animation: shadow 3s linear infinite;
+        }
+        @keyframes animate{
+            0%{
+                transform: translate(-50%, -50%) translateY(0%) rotate(0deg);
+            }
+            50%{
+                transform: translate(-50%, -50%) translateY(-100%) rotate(180deg);
+            }
+            100%{
+                transform: translate(-50%, -50%) translateY(0%) rotate(360deg);
+            }
+        }
+        @keyframes shadow{
+            0%{
+                transform: scale(1);
+            }
+            50%{
+                transform: scale(.1);
+                filter: blur(20px);
+                opacity: 0.05;
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="center">
+        <div class="ball"></div>
+        <div class="shadow"></div>
+    </div>
+    
+</body>
+</html>
