@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Flip Card</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<style type="text/css">
+
+		body{
+			background: #292929;align-items: center;height: 100vh;justify-content: center;font-family: arial;display: flex;
+		}
+		.cardBox{
+			perspective: 500px;margin: 15px;
+		}
+		.card{
+			position: relative;width: 150px;height: 150px;transform-style: preserve-3d;background: #fff;transition: 0.5s ease;box-shadow: 0 30px 30px rgba(0,0,0,0.5);
+		}
+		.facebook{
+			background: #3b5998;
+		}
+		.twitter{
+			background: #00aced;
+		}
+		.googleplus{
+			background: #dd4b39;
+		}
+		.card-front , .card-back{
+			position: absolute;top: 0;left: 0;width: 150px;height: 150px;color: #fff;-webkit-backface-visibility: hidden;-moz-backface-visibility: hidden;
+		}
+		.card-front{
+			font-size: 40px;justify-content: center;align-items: center;display: flex;
+		}
+		.card-back{
+			font-size: 30px;justify-content: center;align-items: center;display: flex;transform: rotateY(180deg);
+		}
+		.cardBox:hover .card{
+			transform: rotateY(180deg);
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<div class="cardBox">
+		<div class="card facebook">
+			<div class="card-front"><i class="fa fa-facebook"></i></div>
+			<div class="card-back">Facebook</div>
+		</div>
+	</div>
+	<div class="cardBox">
+		<div class="card twitter">
+			<div class="card-front"><i class="fa fa-twitter"></i></div>
+			<div class="card-back">Twitter</div>
+		</div>
+	</div>
+	<div class="cardBox">
+		<div class="card googleplus">
+			<div class="card-front"><i class="fa fa-google-plus"></i></div>
+			<div class="card-back">Google+</div>
+		</div>
+	</div>
+
+</body>
+</html>
