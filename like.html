@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Like Button</title>
+	<link rel="stylesheet" href="">
+</head>
+<style>
+	body{
+		margin: 0;
+		padding: 0;
+		background: #262626;
+		font-family: sans-serif;
+	}
+	a{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		width: 200px;
+		height: 75px;
+		background: #fff;
+		border-radius: 75px;
+		line-height: 75px;
+		text-align: center;
+		text-decoration: none;
+		color: #262626;
+		font-size: 2em;
+		text-transform: uppercase;
+		transition: 0.5s;
+	}
+	a.active{
+		background: transparent;
+		color: #fff;
+	}
+	a:before{
+		content: "";
+		position: absolute;
+		width: 50%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: #ff0047;
+		z-index: -1;
+		transition: 0.5s;
+		transform: translateX(0) rotate(0);/*transform: translateX(-200px) rotate(-325deg);*/
+		opacity: 0;
+	}
+	a.active:before{
+		left: 30.5px;
+		transform: translateX(0) rotate(35deg);
+		border-top-left-radius: 75px;
+		border-bottom-left-radius: 75px;
+		opacity: 1;
+	}
+	a:after{
+		content: "";
+		position: absolute;
+		width: 50%;
+		height: 100%;
+		top: 0;
+		right: 0;
+		background: #ff0047;
+		z-index: -1;
+		transition: 0.5s;
+		transform: translateX(0) rotate(0);/*transform: translateX(200px) rotate(325deg);*/
+		opacity: 0;
+	}
+	a.active:after{
+		right: 30.5px;
+		transform: translateX(0) rotate(-35deg);
+		border-top-right-radius: 75px;
+		border-bottom-right-radius: 75px;
+		opacity: 1;
+	}
+</style>
+<body>
+	<a href="#">Like</a>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('a').click(function(){
+				$('a').toggleClass('active');
+			});
+		});
+	</script>
+</body>
+</html>
